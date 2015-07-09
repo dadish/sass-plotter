@@ -1,0 +1,21 @@
+{
+  "name": "sass-plotter",
+  "version": "0.0.1",
+  "description": "Create sass dependency plot from your scss files or your wicked mind.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "sass",
+    "sass-graph",
+    "sass-import",
+    "sass-imports",
+    "scss",
+    "scss-graph",
+    "scss-imports",
+    "sass-import-resolve"
+  ],
+  "author": "dadish <nurguly.ashyrov@gmail.com>",
+  "license": "MIT"
+}
