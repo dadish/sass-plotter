@@ -1,6 +1,5 @@
 SassPlotter = require('../');
 Assert = require('assert');
-Vinyl = require('vinyl');
 path = require('path');
 fs = require('fs');
 _ = require('underscore');
@@ -79,16 +78,5 @@ describe('imports', function () {
     var imports;
     imports = plot.imports(file_b);
     Assert.strictEqual(imports.length, _(imports).unique().length);
-  });
-
-  it("supports vinyl objects", function () {
-    file = new Vinyl({
-      cwd : process.cwd(),
-      base : 'test/',
-      path : file_a,
-      contents : new Buffer(fs.readFileSync(file_a, {encoding : 'utf8'}))
-    });
-    Assert.strictEqual(1, plot.imports(file).length);
-  });
-  
+  });  
 });

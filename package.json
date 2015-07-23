@@ -21,8 +21,7 @@
   "dependencies": {
     "fs-readdir-recursive": "^0.1.2",
     "sass-import-resolve": "^1.0.6",
-    "underscore": "^1.8.3",
-    "vinyl": "^0.5.0"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "mocha": "^2.2.5"

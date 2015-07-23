@@ -16,28 +16,6 @@ describe('unset', function () {
     Assert.strictEqual(true, _.isUndefined(plot._plot[file]));
   });
 
-  describe('if first argument is a vinyl', function () {
-
-    beforeEach(function () {
-      plot = new SassPlotter();
-      file = path.resolve('test/scss/a.scss');
-      plot.set(file);
-      file = new Vinyl({
-        cwd : process.cwd(),
-        base : 'test/',
-        path : file,
-        contents : new Buffer(fs.readFileSync(file, {encoding : 'utf8'}))
-      });
-      plot.set(file);
-    });
-    
-    it("should remove the file from the plot", function () {
-      plot.unset(file);
-      Assert.strictEqual(false, _.isUndefined(plot._plot));
-      Assert.strictEqual(true, _.isUndefined(plot._plot[file.path]));
-    });
-  });
-
   describe('if the file does not exist', function () {
     
     beforeEach(function () {
