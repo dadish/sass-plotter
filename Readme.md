@@ -23,7 +23,7 @@ var plot = new SassPlotter('/path/to/your/scss/files/');
 
 ##API
 
-###Constructor
+###constructor
 ```js
 var plot = new SassPlotter([path], [options]);
 ```
@@ -32,7 +32,7 @@ The full path to the directory with your scss files.
 #####options
 ...
 
-###Set
+###set
 Adds the file into the scss dependency plot. Or overwrites the existing if
 there is already a file with same filepath in the plot.
 ```js
@@ -44,7 +44,7 @@ The path of the scss file or a vinyl object.
 The optional content of your file. If the `file` argument is vinyl then this
 argument is ignored and the content is taken from vinyl object instead.
 
-###Unset
+###unset
 Removes the file from the plot.
 ```js
 plot.unset(file);
@@ -52,7 +52,23 @@ plot.unset(file);
 #####file
 The path of the scss file or a vinyl object.
 
-###Dependents
+###imports
+Returns the filepaths that imports the file.
+```js
+plot.imports(file);
+```
+#####file
+The path of the scss file or a vinyl object.
+
+###importedBy
+Returns the filepaths that the file imports.
+```js
+plot.importedBy(file);
+```
+#####file
+The path of the scss file or a vinyl object.
+
+###dependents
 Returns the filepaths that are affected by a given file. Say you change the content
 of the `example.scss` it will return all files that has directly or indirectly
 imported it and thus depend on `example.scss`.
