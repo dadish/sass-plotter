@@ -4,7 +4,7 @@
   "description": "Create sass dependency plot from your scss files or your wicked mind.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha test/"
   },
   "keywords": [
     "sass",
@@ -17,5 +17,14 @@
     "sass-import-resolve"
   ],
   "author": "dadish <nurguly.ashyrov@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "fs-readdir-recursive": "^0.1.2",
+    "sass-import-resolve": "^1.0.6",
+    "underscore": "^1.8.3",
+    "vinyl": "^0.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
 }
