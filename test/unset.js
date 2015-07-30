@@ -1,6 +1,5 @@
 var SassPlotter = require('../');
 var Assert = require('assert');
-var Vinyl = require('vinyl');
 var path = require('path');
 var fs = require('fs');
 var _ = require('underscore');

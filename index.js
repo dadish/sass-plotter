@@ -1,43 +1,55 @@
 var fs = require('fs');
+var path = require('path');
 var readDir = require('fs-readdir-recursive');
 var sassImportResolve = require('sass-import-resolve');
 var _ = require('underscore');
 
-var defaultOptions = {
-  cwd : process.cwd()
-};
-
 function SassPlotter (file, options) {
 
-  options = _.defaults(defaultOptions, options);
+  this._settings = {
+    cwd : process.cwd(),
+    base : process.cwd()
+  };
 
-  this.cwd = options.cwd;
+  this._settings = _.defaults(options || {}, this._settings);
 
-  this.base = options.base || options.cwd;
-  
   // the plot
   this._plot = {};
 
-  if (file) this.setDir(file);
+  if (file) setDir.apply(this, arguments);
 }
 
-SassPlotter.prototype.set = function(file, content) {
+SassPlotter.prototype.set = function(file, content, options) {
 
-  if (!file) return;
+  if (!file) return this;
 
-  content = content || this.getFileContent(file);
+  options = _.defaults(options || {}, this._settings);
+
+  content = content || getFileContent(file);
   
   this._plot[file] = {
-    resolves : sassImportResolve(file, content)
+    resolves : sassImportResolve(file, content, options)
   };
 
   return this;
 
 };
 
-SassPlotter.prototype.setDir = function(file) {
-  
-};
+function parseDir (dirPath) {
+  dirPath = path.resolve(dirPath);
+  return _(readDir(dirPath)).map(function (item) {
+    return dirPath + '/' + item;
+  });
+}
+
+function setDir (dirPath) {
+  var files;
+  files = parseDir(dirPath);
+
+  _(files).each(function (item) {
+    this.set(item, fs.readFileSync(item, {encoding : 'utf8'}));
+  }, this);
+}
 
 SassPlotter.prototype.unset = function(file) {
 
@@ -47,7 +59,7 @@ SassPlotter.prototype.unset = function(file) {
 
 };
 
-SassPlotter.prototype.getFileContent = function(file) {
+function getFileContent (file) {
   var content;
   try {
     content = fs.readFileSync(file, {encoding : 'utf8'})
@@ -58,10 +70,7 @@ SassPlotter.prototype.getFileContent = function(file) {
 };
 
 SassPlotter.prototype.imports = function(file) {
-  var imports;
-  imports = [];
-
-  imports = _(this._plot).reduce(function (memo, item, key) {
+  return _(this._plot).reduce(function (memo, item, key) {
     _(item.resolves).some(function (resolve) {
       if (resolve === file) {
         memo.push(key);
@@ -70,12 +79,30 @@ SassPlotter.prototype.imports = function(file) {
     });
     return memo;
   }, []);
-
-  return imports;
 };
 
 SassPlotter.prototype.importedBy = function(file) {
+  if (!this._plot[file]) return [];
+  return _(this._plot[file].resolves).reduce(function (memo, item, key) {
+    if(this._plot[item]) memo.push(item);
+    return memo;
+  }, [], this);
+};
+
+function getDependents (file, dependents, parsed) {
+  parsed[file] = true;
+  dependents.push(this.imports(file));
+  dependents = _(dependents).flatten();
+  _(dependents).each(function (item) {
+    if (parsed[item]) return;
+    dependents = getDependents.apply(this, [item, dependents, parsed]);
+  }, this);
   
+  return _(dependents).chain().flatten().unique().value();
+}
+
+SassPlotter.prototype.dependents = function(file) {
+  return getDependents.apply(this, [file, [], {}]);
 };
 
 module.exports = SassPlotter;
