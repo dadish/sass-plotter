@@ -11,7 +11,7 @@ graph for your needs.
 ## Installation
 Install with [npm][npm]
 ```bash
-npm install sass-import-resolve
+$ npm install sass-import-resolve
 ```
 
 ##Usage
@@ -89,8 +89,8 @@ The path of the scss file.
 
 ##Test
 ```
-npm install
-npm test
+$ npm install
+$ npm test
 ```
 
 ##License

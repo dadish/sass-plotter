@@ -18,6 +18,19 @@
   ],
   "author": "dadish <nurguly.ashyrov@gmail.com>",
   "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dadish/sass-plotter.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/dadish/sass-plotter/master/LICENSE"
+    }
+  ],
   "dependencies": {
     "fs-readdir-recursive": "^0.1.2",
     "sass-import-resolve": "^1.0.7",
