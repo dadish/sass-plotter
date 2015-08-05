@@ -3,6 +3,8 @@ sass-plotter
 
 Create sass dependency plot from scss files or your wicked mind.
 
+[![Build Status](https://travis-ci.org/dadish/sass-plotter.svg?branch=master)](https://travis-ci.org/dadish/sass-plotter)
+
 The module allows you to create a scss dependency graph just like [sass-graph][sass-graph].
 The difference is that it does not depend on actual files on your machine.
 This allows you to `set()`, `unset()` the files into the plot to manipulate the
