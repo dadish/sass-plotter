@@ -13,7 +13,7 @@ graph for your needs.
 ## Installation
 Install with [npm][npm]
 ```bash
-$ npm install sass-import-resolve
+$ npm install sass-plotter
 ```
 
 ## Usage
