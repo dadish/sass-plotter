@@ -1,6 +1,6 @@
 {
   "name": "sass-plotter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Create sass dependency plot from scss files or your wicked mind.",
   "main": "index.js",
   "scripts": {
