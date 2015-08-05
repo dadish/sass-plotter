@@ -8,6 +8,12 @@ The difference is that it does not depend on actual files on your machine.
 This allows you to `set()`, `unset()` the files into the plot to manipulate the
 graph for your needs.
 
+## Installation
+Install with [npm][npm]
+```bash
+npm install sass-import-resolve
+```
+
 ##Usage
 ```js
 var SassPlotter = require('sass-plotter');
@@ -83,6 +89,7 @@ The path of the scss file.
 
 ##Test
 ```
+npm install
 npm test
 ```
 
@@ -94,3 +101,4 @@ npm test
 [sass-import-resolve-options]: http://npmjs.org/package/sass-import-resolve#options
 [vinyl]: http://npmjs.org/package/vinyl
 [license]: https://raw.githubusercontent.com/dadish/sass-plotter/master/LICENSE
+[npm]: https://npmjs.org

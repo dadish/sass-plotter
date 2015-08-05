@@ -1,7 +1,7 @@
 {
   "name": "sass-plotter",
   "version": "0.1.0",
-  "description": "Create sass dependency plot from your scss files or your wicked mind.",
+  "description": "Create sass dependency plot from scss files or your wicked mind.",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/"
@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "fs-readdir-recursive": "^0.1.2",
-    "sass-import-resolve": "^1.0.6",
+    "sass-import-resolve": "^1.0.7",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
