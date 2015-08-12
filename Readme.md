@@ -36,7 +36,7 @@ var plot = new SassPlotter([path[, options]]);
 ```
 ##### path
 The full path to the directory with your scss files.
-#####options
+##### options
 Set the default behavior in the constructor. The options are those of [sass-import-resolve][sass-import-resolve], 
 see the [options][sass-import-resolve-options] section there for more details.
 
