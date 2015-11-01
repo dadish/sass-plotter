@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "fs-readdir-recursive": "^0.1.2",
-    "sass-import-resolve": "^1.0.7",
+    "sass-import-resolve": "^1.0.9",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
